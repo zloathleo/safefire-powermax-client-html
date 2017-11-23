@@ -5,8 +5,7 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-  entry: {
-    fxdemo: './src/FxDemo.jsx',
+  entry: { 
     index: './src/Index.jsx',
   },
   //ES6 pack成 ES5
@@ -42,11 +41,11 @@ module.exports = {
     //生成css
     new ExtractTextPlugin("index.css"),
 
-    new CopyWebpackPlugin([
-      {
-        from: __dirname + '/src/JavaInterface.js',
-        to: __dirname + '/public/dist/java_interface.js',
-      }]),
+    // new CopyWebpackPlugin([
+    //   {
+    //     from: __dirname + '/src/JavaInterface.js',
+    //     to: __dirname + '/public/dist/java_interface.js',
+    //   }]),
 
     // new webpack.optimize.UglifyJsPlugin({
     //   //生成环境启用js压缩

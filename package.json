@@ -1,5 +1,5 @@
 {
-  "name": "zq-aix-client-html",
+  "name": "safefire-powermax-client-html",
   "version": "1.0.0",
   "description": "",
   "author": "leo zhong",
@@ -23,6 +23,7 @@
     "react-bootstrap": "^0.31.5",
     "react-custom-scrollbars": "^4.1.2",
     "react-dom": "^15.6.1",
+    "react-intl": "^2.4.0",
     "style-loader": "^0.18.2",
     "webpack": "^3.5.5"
   },

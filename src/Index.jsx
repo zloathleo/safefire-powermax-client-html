@@ -7,15 +7,27 @@ import { NavBar, SideBar, Content, Footer } from './dashboard/index.jsx';
 
 import './css/common.css';
 
+//i18n
+import { IntlProvider, addLocaleData } from 'react-intl';
+import zh_CN from './i18n/zh.js';
+import zhLocaleData from 'react-intl/locale-data/zh';
+//sim
+import DataSim from './mock/DataSim.jsx';
+
+addLocaleData(zhLocaleData);
+
 class Index extends React.Component {
 
     constructor(props) {
         super(props);
+        let isMock = true;
+        if (isMock) {
+            //模拟数据开关
+            DataSim.init();
+        }
     }
 
     componentWillMount() {
-        console.log('Common', Common);
-
         // Common.MyFetch.fetch('http://localhost/test.json', { method: 'GET' }, function (json) {
         //     console.log(json);
         // });
@@ -24,14 +36,16 @@ class Index extends React.Component {
 
     render() {
         return (
-            <div className="wrapper">
-                <SideBar />
-                <div className="main-panel">
-                    <NavBar />
-                    <Content />
-                    <Footer />
-                </div>
-            </div >
+            <IntlProvider locale='zh' messages={zh_CN}>
+                <div className="wrapper">
+                    <SideBar />
+                    <div className="main-panel">
+                        <NavBar />
+                        <Content />
+                        {/* <Footer /> */}
+                    </div>
+                </div >
+            </IntlProvider>
         )
     }
 
