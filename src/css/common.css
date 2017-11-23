@@ -1,0 +1,26 @@
+.sidebar-bg-black{
+    background-color: #191919;
+}
+
+.sidebar .nav li > a, .off-canvas-sidebar .nav li > a { 
+    color: #f5f5f5;
+}
+
+.sidebar .nav .caret {
+    margin-top: 13px;
+    position: absolute;
+    right: 18px;
+}
+
+.sidebar .logo .simple-text, .off-canvas-sidebar .logo .simple-text { 
+    color: #ffffff; 
+}
+
+.btn-group.open > .dropdown-toggle.btn, .btn-group.open > .dropdown-toggle.btn.btn-default, .btn-group-vertical.open > .dropdown-toggle.btn, .btn-group-vertical.open > .dropdown-toggle.btn.btn-default {
+    background-color: #9c27b0;
+}
+
+.btn, .navbar .navbar-nav > li > a.btn {  
+    border-radius: 0px;
+    padding: 5px 5px; 
+}
