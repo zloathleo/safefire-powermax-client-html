@@ -22,40 +22,38 @@ class DashBoardModule extends React.Component {
         let _data = this.state.data;
         if (_data) {
             return (
-                <div className="content">
-                    <div className="container-fluid">
-                        <div className="row">
-                            <div className="col-sm-12">
-                                <DashBoardSummaryCardPane data={_data.summary} />
-                            </div>
 
-                            <div className="col-xs-6 col-sm-4 col-lg-3">
-                                <DashBoardInfoCardPane data={_data.kongyuqi} />
-                            </div>
-                            <div className="col-xs-6 col-sm-4 col-lg-3">
-                                <DashBoardInfoCardPane data={_data.kongyuqi} />
-                            </div>
-                            <div className="col-xs-6 col-sm-4 col-lg-3">
-                                <DashBoardInfoCardPane data={_data.kongyuqi} />
-                            </div>
-                            <div className="col-xs-6 col-sm-4 col-lg-3">
-                                <DashBoardInfoCardPane data={_data.kongyuqi} />
-                            </div>
-                            <div className="col-xs-6 col-sm-4 col-lg-3">
-                                <DashBoardInfoCardPane data={_data.kongyuqi} />
-                            </div>
-                            <div className="col-xs-6 col-sm-4 col-lg-3">
-                                <DashBoardInfoCardPane data={_data.kongyuqi} />
-                            </div>
-                            <div className="col-xs-6 col-sm-4 col-lg-3">
-                                <DashBoardInfoCardPane data={_data.kongyuqi} />
-                            </div>
-                            <div className="col-xs-6 col-sm-4 col-lg-3">
-                                <DashBoardInfoCardPane data={_data.kongyuqi} />
-                            </div>
-                        </div>
+                <div className="row">
+                    <div className="col-sm-12">
+                        <DashBoardSummaryCardPane data={_data.summary} />
+                    </div>
+
+                    <div className="col-xs-6 col-sm-4 col-lg-3">
+                        <DashBoardInfoCardPane data={_data.kongyuqi} />
+                    </div>
+                    <div className="col-xs-6 col-sm-4 col-lg-3">
+                        <DashBoardInfoCardPane data={_data.kongyuqi} />
+                    </div>
+                    <div className="col-xs-6 col-sm-4 col-lg-3">
+                        <DashBoardInfoCardPane data={_data.kongyuqi} />
+                    </div>
+                    <div className="col-xs-6 col-sm-4 col-lg-3">
+                        <DashBoardInfoCardPane data={_data.kongyuqi} />
+                    </div>
+                    <div className="col-xs-6 col-sm-4 col-lg-3">
+                        <DashBoardInfoCardPane data={_data.kongyuqi} />
+                    </div>
+                    <div className="col-xs-6 col-sm-4 col-lg-3">
+                        <DashBoardInfoCardPane data={_data.kongyuqi} />
+                    </div>
+                    <div className="col-xs-6 col-sm-4 col-lg-3">
+                        <DashBoardInfoCardPane data={_data.kongyuqi} />
+                    </div>
+                    <div className="col-xs-6 col-sm-4 col-lg-3">
+                        <DashBoardInfoCardPane data={_data.kongyuqi} />
                     </div>
                 </div>
+
             )
         } else {
             return (<div className="content">  </div>);

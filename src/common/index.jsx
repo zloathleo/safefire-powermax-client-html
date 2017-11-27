@@ -1,3 +1,4 @@
 import MyFetch from './MyFetch.jsx';
+import EventProxy from './EventProxy.jsx';
 
-export default { MyFetch }
+export default { MyFetch, EventProxy }

@@ -1,0 +1,39 @@
+{
+    "name": "right",
+    "rows|2-8": [
+        [
+            {
+                "name": "E11",
+                "state": 1,
+                "min": 10,
+                "max": 90,
+                "value": 60,
+                "pollutionRate": 80
+            },
+            {
+                "name": "E12",
+                "state": 2,
+                "min": 10,
+                "max": 90,
+                "value": 60,
+                "pollutionRate": 80
+            },
+            {
+                "name": "E13",
+                "state": 2,
+                "min": 10,
+                "max": 90,
+                "value": 60,
+                "pollutionRate": 80
+            },
+            {
+                "name": "E14",
+                "state": 2,
+                "min": 10,
+                "max": 90,
+                "value": 60,
+                "pollutionRate": 80
+            }
+        ]
+    ]
+}

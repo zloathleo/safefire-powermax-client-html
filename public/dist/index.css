@@ -33,13 +33,43 @@ h3, .h3 {
     margin: 0px 0px;
 }
 
-.card .card-content {
-    padding: 10px 20px 0px;
+.card .card-header.card-header-icon {
+    float: left;
 }
+
+.card .card-title {
+    margin-top: -8px;
+    margin-bottom: 3px;
+    float: right;
+}
+
+/* .card .card-content {
+    padding: 10px 20px 0px;
+} */
 
 .card .card-footer { 
     margin: 0 20px 0px;
     padding-top: 0px;
     border-top: 0px;
+}
+
+.sidebar .nav li:hover > a, .off-canvas-sidebar .nav li:hover > a {
+  background: rgba(200, 200, 200, 0.2);
+  color: #ffffff;
+}
+
+.nav-center {
+    text-align: center;
+}
+
+.nav-center .nav-pills-icons {
+    display: inline-block;
+}.chuihuiqi-pane {
+    text-align: center;
+}
+
+.chuihuiqi-label1 {
+    margin: 10px 10px;
+    padding: 10px;
 }
 /*# sourceMappingURL=index.css.map*/

@@ -22,16 +22,12 @@ class DashBoardSummaryCardPane extends React.Component {
         let _data = this.props.data;
 
         return (
-            <div className="card card-stats">
-                <div className="card-header" data-background-color="purple">
+            <div className="card">
+                <div className="card-header card-header-icon" data-background-color="purple">
                     <i className="glyphicon glyphicon-home"></i>
                 </div>
                 <div className="card-content">
-                    {/* <p className="category">参数汇总</p> */}
                     <h4 className="card-title">参数汇总</h4>
-
-                </div>
-                <div className="card-footer">
                     <table className="table">
                         <thead>
                             <tr>

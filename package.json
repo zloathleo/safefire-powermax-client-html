@@ -21,6 +21,7 @@
     "mockjs": "^1.0.1-beta3",
     "react": "^15.6.1",
     "react-bootstrap": "^0.31.5",
+    "react-chartist": "^0.13.0",
     "react-custom-scrollbars": "^4.1.2",
     "react-dom": "^15.6.1",
     "react-intl": "^2.4.0",

@@ -6,6 +6,7 @@ import Common from './common/index.jsx';
 import { NavBar, SideBar, Content, Footer } from './dashboard/index.jsx';
 
 import './css/common.css';
+import './css/custom.css';
 
 //i18n
 import { IntlProvider, addLocaleData } from 'react-intl';
@@ -41,7 +42,11 @@ class Index extends React.Component {
                     <SideBar />
                     <div className="main-panel">
                         <NavBar />
-                        <Content />
+                        <div className="content">
+                            <div className="container-fluid">
+                                <Content />
+                            </div>
+                        </div>
                         {/* <Footer /> */}
                     </div>
                 </div >

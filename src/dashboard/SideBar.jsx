@@ -1,10 +1,30 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
+import AppState from '../state/AppState.jsx';
+import Common from '../common/index.jsx';
+
 class SideBar extends React.Component {
 
     constructor(props) {
         super(props);
+        this.generateClassName = this.generateClassName.bind(this);
+        Common.EventProxy.on('ActiveModule', (value) => {
+            this.forceUpdate();
+        });
+    }
+
+    clickSideItem(_ppp) {
+        AppState.changeState('ActiveModule', _ppp);
+        console.log(_ppp);
+    }
+
+    generateClassName(_itemName) {
+        if (AppState.ActiveModule == _itemName) {
+            return 'active';
+        } else {
+            return '';
+        }
     }
 
     render() {
@@ -18,27 +38,27 @@ class SideBar extends React.Component {
 
                 <div className="sidebar-wrapper">
                     <ul className="nav">
-                        <li className="active">
-                            <a href="#">
+                        <li className={this.generateClassName('dashboard')}>
+                            <a href="#" onClick={this.clickSideItem.bind(this, 'dashboard')}>
                                 <i className="fa fa-th-large"></i>
                                 <p>
-                                    <FormattedMessage id='dashboard.overview' />
+                                    <FormattedMessage id='dashboard.sidebar.dashboard' />
                                 </p>
                             </a>
                         </li>
-                        <li>
-                            <a href="#">
+                        <li className={this.generateClassName('lutang')}>
+                            <a href="#" onClick={this.clickSideItem.bind(this, 'lutang')}>
                                 <i className="fa fa-free-code-camp fa-2"></i>
                                 <p>
-                                    <FormattedMessage id='dashboard.chuihuiqi.lutang' />
+                                    <FormattedMessage id='dashboard.sidebar.lutang' />
                                 </p>
                             </a>
                         </li>
-                        <li>
-                            <a href="#">
+                        <li className={this.generateClassName('shouremian')}>
+                            <a href="#" onClick={this.clickSideItem.bind(this, 'shouremian')}>
                                 <i className="fa fa-fire fa-2"></i>
                                 <p>
-                                    <FormattedMessage id='dashboard.chuihuiqi.shouremian' />
+                                    <FormattedMessage id='dashboard.sidebar.shouremian' />
                                 </p>
                             </a>
                         </li>

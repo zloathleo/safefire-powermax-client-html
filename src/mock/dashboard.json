@@ -1,0 +1,54 @@
+{
+    "summary": [
+        {
+            "field": "机组负荷",
+            "value": 90
+        },
+        {
+            "field": "锅炉负荷",
+            "value": 190
+        },
+        {
+            "field": "再热器出口工质温度",
+            "value": 90
+        },
+        {
+            "field": "排烟温度",
+            "value": 290
+        },
+        {
+            "field": "主汽压力",
+            "value": 290
+        },
+        {
+            "field": "总给煤量",
+            "value": 290
+        },
+        {
+            "field": "三过出口蒸汽温度",
+            "value": 290
+        }
+    ],
+    "kongyuqi": {
+        "name": "空预器",
+        "pollutionRate": 30.01,
+        "values": [
+            {
+                "field": "烟气A",
+                "value": 90
+            },
+            {
+                "field": "烟气B",
+                "value": 190
+            },
+            {
+                "field": "工质A",
+                "value": 90
+            },
+            {
+                "field": "工质B",
+                "value": 290
+            }
+        ]
+    }
+}

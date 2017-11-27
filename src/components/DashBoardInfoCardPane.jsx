@@ -21,16 +21,12 @@ class DashBoardInfoCardPane extends React.Component {
         let _data = this.props.data;
 
         return (
-            <div className="card card-stats">
-                <div className="card-header" data-background-color="purple">
+            <div className="card">
+                <div className="card-header card-header-icon" data-background-color="purple">
                     <i className="fa fa-file-text"></i>
                 </div>
                 <div className="card-content">
-                    <p className="category">{_data.name}</p>
-                    <h3 className="card-title">{_data.pollution_rate}</h3>
-
-                </div>
-                <div className="card-footer">
+                    <h4 className="card-title">{_data.pollutionRate} {_data.name}</h4>
                     <table className="table">
                         <tbody>
                             {
