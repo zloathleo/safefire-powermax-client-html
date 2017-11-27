@@ -4,9 +4,12 @@ import FetchMock from 'fetch-mock';
 
 import dashboard from './dashboard.json';
 import lutangwall from './lutangwall.json';
+import chuihuiqitrend from './chuihuiqitrend.json';
 
 export default {
     init: function () {
+
+        FetchMock.get('/chuihuiqi/trend/E11', Mock.mock(chuihuiqitrend));
 
         FetchMock.get('/lutangwall', Mock.mock(lutangwall));
 

@@ -15,6 +15,11 @@ class Content extends React.Component {
         });
     }
 
+    componentWillUnmount(){
+        Common.EventProxy.off('ActiveModule');
+    }
+
+
     render() {
         if (AppState.ActiveModule == 'dashboard') {
             return (

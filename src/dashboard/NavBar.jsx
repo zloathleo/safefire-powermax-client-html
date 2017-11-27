@@ -14,6 +14,10 @@ class NavBar extends React.Component {
         });
     }
 
+    componentWillUnmount(){
+        Common.EventProxy.off('ActiveModule');
+    }
+
     render() {
         return (
             <nav className="navbar navbar-transparent navbar-absolute">

@@ -14,9 +14,12 @@ class SideBar extends React.Component {
         });
     }
 
-    clickSideItem(_ppp) {
-        AppState.changeState('ActiveModule', _ppp);
-        console.log(_ppp);
+    componentWillUnmount(){
+        Common.EventProxy.off('ActiveModule');
+    }
+
+    clickSideItem(_am) {
+        AppState.changeState('ActiveModule', _am); 
     }
 
     generateClassName(_itemName) {
