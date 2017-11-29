@@ -16,13 +16,8 @@ class LuTangChuihuiqiCell extends React.Component {
 
     render() {
         let _data = this.props.data;
-        let _color = '#eee';//未吹灰
-        if (_data.status == 1) {
-            _color = '#4caf50';//需要吹灰
-        } else if (_data.status == 2) {
-            _color = '#ff9800';//正在吹灰
-        }
-
+        let _color = Common.Utils.renderChuiHuiQiColor(_data.status);
+         
         return (
             <div className="col-xs-6 col-sm-3 col-md-3">
                 <div className="chuihuiqi-pane" style={{ backgroundColor: _color, cursor: 'pointer' }} onClick={this.clickChuiHuiQiCell.bind(this, _data.name)} >

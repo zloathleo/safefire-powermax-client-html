@@ -40,6 +40,8 @@ class LuTangTrend extends React.Component {
                 strokeColor: "#ff9800",
             }, {
                 strokeColor: "#4caf50",
+            }, {
+                strokeColor: "#7a6fbe",
             }
         ]
         Common.MyFetch.fetch('/chuihuiqi/trend/' + this.props.name, { method: 'GET' }, function (_json) {
@@ -52,7 +54,7 @@ class LuTangTrend extends React.Component {
                     data: _item.data,
                     borderWidth: 1,
                     fill: false,
-                    steppedLine: 'before',
+                    steppedLine: _item.steppedLine ? _item.steppedLine : false,
                     backgroundColor: _style[_index].strokeColor,
                     borderColor: _style[_index].strokeColor
                 });
