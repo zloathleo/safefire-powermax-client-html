@@ -27,6 +27,38 @@ class LuTangTrend extends React.Component {
                 mode: mode,
                 intersect: intersect
             },
+            scales: {
+                yAxes: [
+                    {
+                        type: "linear",
+                        display: true,
+                        position: "left",
+                        id: "y-axis-value",
+                    }, {
+                        type: "linear",
+                        display: true,
+                        position: "right",
+                        id: "y-axis-status",
+                        gridLines: {
+                            drawOnChartArea: false,
+                        },
+                        ticks: {
+                            suggestedMin: -1,
+                            suggestedMax: 2
+                        }
+                    }, {
+                        type: "linear",
+                        display: false,// 不显示
+                        id: "y-axis-percent",
+                        gridLines: {
+                            drawOnChartArea: false, // 不显示
+                        },
+                        ticks: {
+                            suggestedMin: -0.5,
+                            suggestedMax: 1.5
+                        }
+                    }],
+            }
         };
     }
 
@@ -45,7 +77,8 @@ class LuTangTrend extends React.Component {
             }
         ]
         Common.MyFetch.fetch('/chuihuiqi/trend/' + this.props.name, { method: 'GET' }, function (_json) {
-            let _datas = _json.trneds.datas;
+            let _data = _json.data;
+            let _datas = _data.trneds.datas;
 
             let _datasets = new Array();
             _datas.forEach((_item, _index) => {
@@ -56,13 +89,14 @@ class LuTangTrend extends React.Component {
                     fill: false,
                     steppedLine: _item.steppedLine ? _item.steppedLine : false,
                     backgroundColor: _style[_index].strokeColor,
-                    borderColor: _style[_index].strokeColor
+                    borderColor: _style[_index].strokeColor,
+                    yAxisID: _item.yAxisID,
                 });
             });
 
             var _chartData = {
-                title: _json.name + "历史趋势",
-                labels: _json.trneds.labels,
+                title: _data.name + "历史趋势",
+                labels: _data.trneds.labels,
                 datasets: _datasets,
             };
 

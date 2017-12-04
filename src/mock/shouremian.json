@@ -1,95 +1,279 @@
 {
-    "name": "受热面吹灰器",
-    "rows": [
-        {
-            "name": "一级过",
-            "items": [
-                {
-                    "name": "HL1",
-                    "status": 1
-                },
-                {
-                    "name": "HL2",
-                    "status": 1
-                },
-                {
-                    "name": "HL3",
-                    "status": 2
-                },
-                {
-                    "name": "HL4",
-                    "status": 2
-                },
-                {
-                    "name": "HL5",
-                    "status": 0
-                },
-                {
-                    "name": "HL6",
-                    "status": 0
-                },
-                {
-                    "name": "HL7",
-                    "status": 0
-                },
-                {
-                    "name": "HL8",
-                    "status": 0
-                },
-                {
-                    "name": "HL9",
-                    "status": 0
-                },
-                {
-                    "name": "HL10",
-                    "status": 0
-                }
-            ]
-        },
-        {
-            "name": "省煤器",
-            "items": [
-                {
-                    "name": "HL1",
-                    "status": 0
-                },
-                {
-                    "name": "HL2",
-                    "status": 1
-                },
-                {
-                    "name": "HL3",
-                    "status": 2
-                },
-                {
-                    "name": "HL4",
-                    "status": 0
-                },
-                {
-                    "name": "HL5",
-                    "status": 1
-                },
-                {
-                    "name": "HL6",
-                    "status": 2
-                },
-                {
-                    "name": "HL7",
-                    "status": 0
-                },
-                {
-                    "name": "HL8",
-                    "status": 0
-                },
-                {
-                    "name": "HL9",
-                    "status": 0
-                },
-                {
-                    "name": "HL10",
-                    "status": 0
-                }
-            ]
-        }
-    ]
+    "code": "000000",
+    "msg": "ok",
+    "data": {
+        "name": "受热面吹灰器",
+        "rows": [
+            {
+                "name": "一级过",
+                "items": [
+                    {
+                        "field": "Thing1.AA1",
+                        "value": 0
+                    },
+                    {
+                        "field": "Thing1.AA2",
+                        "value": 1
+                    },
+                    {
+                        "field": "Thing1.AA3",
+                        "value": 2
+                    },
+                    {
+                        "field": "Thing1.AA4",
+                        "value": 1
+                    },
+                    {
+                        "field": "Thing1.AA1",
+                        "value": 1
+                    },
+                    {
+                        "field": "Thing1.AA2",
+                        "value": 0
+                    },
+                    {
+                        "field": "Thing1.AA3",
+                        "value": 0
+                    },
+                    {
+                        "field": "Thing1.AA4",
+                        "value": 0
+                    },
+                    {
+                        "field": "Thing1.AA1",
+                        "value": 1
+                    },
+                    {
+                        "field": "Thing1.AA2",
+                        "value": 1
+                    }
+                ]
+            },
+            {
+                "name": "省煤器",
+                "items": [
+                    {
+                        "field": "Thing1.AA1",
+                        "value": 0
+                    },
+                    {
+                        "field": "Thing1.AA2",
+                        "value": 1
+                    },
+                    {
+                        "field": "Thing1.AA3",
+                        "value": 2
+                    },
+                    {
+                        "field": "Thing1.AA4",
+                        "value": 1
+                    },
+                    {
+                        "field": "Thing1.AA1",
+                        "value": 1
+                    },
+                    {
+                        "field": "Thing1.AA2",
+                        "value": 0
+                    },
+                    {
+                        "field": "Thing1.AA3",
+                        "value": 0
+                    },
+                    {
+                        "field": "Thing1.AA4",
+                        "value": 0
+                    },
+                    {
+                        "field": "Thing1.AA1",
+                        "value": 1
+                    },
+                    {
+                        "field": "Thing1.AA2",
+                        "value": 1
+                    }
+                ]
+            },
+            {
+                "name": "一级再",
+                "items": [
+                    {
+                        "field": "Thing1.AA1",
+                        "value": 0
+                    },
+                    {
+                        "field": "Thing1.AA2",
+                        "value": 1
+                    },
+                    {
+                        "field": "Thing1.AA3",
+                        "value": 2
+                    },
+                    {
+                        "field": "Thing1.AA4",
+                        "value": 1
+                    },
+                    {
+                        "field": "Thing1.AA1",
+                        "value": 1
+                    },
+                    {
+                        "field": "Thing1.AA2",
+                        "value": 0
+                    },
+                    {
+                        "field": "Thing1.AA3",
+                        "value": 0
+                    },
+                    {
+                        "field": "Thing1.AA4",
+                        "value": 0
+                    },
+                    {
+                        "field": "Thing1.AA1",
+                        "value": 1
+                    },
+                    {
+                        "field": "Thing1.AA2",
+                        "value": 1
+                    }
+                ]
+            },
+            {
+                "name": "二级过",
+                "items": [
+                    {
+                        "field": "Thing1.AA1",
+                        "value": 0
+                    },
+                    {
+                        "field": "Thing1.AA2",
+                        "value": 1
+                    },
+                    {
+                        "field": "Thing1.AA3",
+                        "value": 2
+                    },
+                    {
+                        "field": "Thing1.AA4",
+                        "value": 1
+                    },
+                    {
+                        "field": "Thing1.AA1",
+                        "value": 1
+                    },
+                    {
+                        "field": "Thing1.AA2",
+                        "value": 0
+                    },
+                    {
+                        "field": "Thing1.AA3",
+                        "value": 0
+                    },
+                    {
+                        "field": "Thing1.AA4",
+                        "value": 0
+                    },
+                    {
+                        "field": "Thing1.AA1",
+                        "value": 1
+                    },
+                    {
+                        "field": "Thing1.AA2",
+                        "value": 1
+                    }
+                ]
+            },
+            {
+                "name": "二级再",
+                "items": [
+                    {
+                        "field": "Thing1.AA1",
+                        "value": 0
+                    },
+                    {
+                        "field": "Thing1.AA2",
+                        "value": 1
+                    },
+                    {
+                        "field": "Thing1.AA3",
+                        "value": 2
+                    },
+                    {
+                        "field": "Thing1.AA4",
+                        "value": 1
+                    },
+                    {
+                        "field": "Thing1.AA1",
+                        "value": 1
+                    },
+                    {
+                        "field": "Thing1.AA2",
+                        "value": 0
+                    },
+                    {
+                        "field": "Thing1.AA3",
+                        "value": 0
+                    },
+                    {
+                        "field": "Thing1.AA4",
+                        "value": 0
+                    },
+                    {
+                        "field": "Thing1.AA1",
+                        "value": 1
+                    },
+                    {
+                        "field": "Thing1.AA2",
+                        "value": 1
+                    }
+                ]
+            },
+            {
+                "name": "三级过",
+                "items": [
+                    {
+                        "field": "Thing1.AA1",
+                        "value": 0
+                    },
+                    {
+                        "field": "Thing1.AA2",
+                        "value": 1
+                    },
+                    {
+                        "field": "Thing1.AA3",
+                        "value": 2
+                    },
+                    {
+                        "field": "Thing1.AA4",
+                        "value": 1
+                    },
+                    {
+                        "field": "Thing1.AA1",
+                        "value": 1
+                    },
+                    {
+                        "field": "Thing1.AA2",
+                        "value": 0
+                    },
+                    {
+                        "field": "Thing1.AA3",
+                        "value": 0
+                    },
+                    {
+                        "field": "Thing1.AA4",
+                        "value": 0
+                    },
+                    {
+                        "field": "Thing1.AA1",
+                        "value": 1
+                    },
+                    {
+                        "field": "Thing1.AA2",
+                        "value": 1
+                    }
+                ]
+            }
+        ]
+    }
 }

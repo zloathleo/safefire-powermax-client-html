@@ -9,15 +9,15 @@ import lutangbeihuce from './lutangbeihuce.json';
 import shouremian from './shouremian.json';
 
 export default {
-    init: function () {
-
-        FetchMock.get('/lutangbeihuce', Mock.mock(lutangbeihuce));
+    init: function () { 
 
         FetchMock.get('/shouremian', Mock.mock(shouremian));
 
+        FetchMock.get('/lutangbeihuce/right', Mock.mock(lutangbeihuce));
+
         FetchMock.get('/chuihuiqi/trend/E11', Mock.mock(chuihuiqitrend));
 
-        FetchMock.get('/lutangwall', Mock.mock(lutangwall));
+        FetchMock.get('/lutangwall/right', Mock.mock(lutangwall));
 
         FetchMock.get('/dashboard', Mock.mock(dashboard));
 

@@ -82,7 +82,7 @@ class LuTangModule extends React.Component {
             )
         } else if (_view == 'trend') {
             return (
-                <LuTangTrend />
+                <LuTangTrend name={this.state.trendName}/>
             );
         }
 

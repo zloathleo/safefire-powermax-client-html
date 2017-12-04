@@ -26,7 +26,7 @@ class Index extends React.Component {
             //模拟数据开关
             DataSim.init();
         }else{
-            Common.MyFetch.host = 'http://localhost:8080';
+            Common.MyFetch.host = 'http://localhost:8099';
         }
     }
 

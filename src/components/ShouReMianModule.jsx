@@ -16,18 +16,18 @@ class ShouReMianModule extends React.Component {
 
     componentWillMount() {
         Common.MyFetch.fetch('/shouremian', { method: 'GET' }, function (_json) {
-            this.setState({ data: _json });
+            this.setState({ data: _json.data });
         }.bind(this));
     }
 
     renderColumn(item, i) {
-        let _color = Common.Utils.renderChuiHuiQiColor(item.status);
+        let _color = Common.Utils.renderChuiHuiQiColor(item.value);
 
         return (
             <div className="col-sm-1 shouremian-pane" key={i}>
                 <div className="card shouremian-card" style={{ backgroundColor: _color }}>
                     <div className="card-content text-center shouremian-pane-card-content" >
-                        {item.name}
+                        {item.field}
                     </div>
                 </div>
             </div>

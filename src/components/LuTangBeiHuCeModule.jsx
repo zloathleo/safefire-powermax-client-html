@@ -8,13 +8,20 @@ class LuTangBeiHuCeModule extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { selectItem: 'right' };
+        this.state = { selectItem: 'right', data: undefined };
         this.generateClassName = this.generateClassName.bind(this);
     }
 
+    componentWillMount() {
+        Common.MyFetch.fetch('/lutangbeihuce/' + this.state.selectItem, { method: 'GET' }, function (_json) {
+            this.setState({ data: _json.data });
+        }.bind(this));
+    }
+
     clickNavItem(_clickItem) {
-        console.log(_clickItem);
-        this.setState({ selectItem: _clickItem });
+        Common.MyFetch.fetch('/lutangbeihuce/' + _clickItem, { method: 'GET' }, function (_json) {
+            this.setState({ selectItem: _clickItem, data: _json.data });
+        }.bind(this)); 
     }
 
     generateClassName(_itemName) {
@@ -56,7 +63,7 @@ class LuTangBeiHuCeModule extends React.Component {
                     </div>
 
                     <div className="card" style={{ marginTop: '0px' }}>
-                        <LuTangBeihuoceWall />
+                        <LuTangBeihuoceWall data={this.state.data}/>
                     </div>
                 </div>
             </div>

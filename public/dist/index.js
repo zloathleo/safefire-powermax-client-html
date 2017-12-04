@@ -7722,6 +7722,37 @@ var LuTangTrend = function (_React$Component) {
             hover: {
                 mode: mode,
                 intersect: intersect
+            },
+            scales: {
+                yAxes: [{
+                    type: "linear",
+                    display: true,
+                    position: "left",
+                    id: "y-axis-value"
+                }, {
+                    type: "linear",
+                    display: true,
+                    position: "right",
+                    id: "y-axis-status",
+                    gridLines: {
+                        drawOnChartArea: false
+                    },
+                    ticks: {
+                        suggestedMin: -1,
+                        suggestedMax: 2
+                    }
+                }, {
+                    type: "linear",
+                    display: false, // 不显示
+                    id: "y-axis-percent",
+                    gridLines: {
+                        drawOnChartArea: false // 不显示
+                    },
+                    ticks: {
+                        suggestedMin: -0.5,
+                        suggestedMax: 1.5
+                    }
+                }]
             }
         };
         return _this;
@@ -7742,7 +7773,8 @@ var LuTangTrend = function (_React$Component) {
                 strokeColor: "#7a6fbe"
             }];
             _index3.default.MyFetch.fetch('/chuihuiqi/trend/' + this.props.name, { method: 'GET' }, function (_json) {
-                var _datas = _json.trneds.datas;
+                var _data = _json.data;
+                var _datas = _data.trneds.datas;
 
                 var _datasets = new Array();
                 _datas.forEach(function (_item, _index) {
@@ -7753,13 +7785,14 @@ var LuTangTrend = function (_React$Component) {
                         fill: false,
                         steppedLine: _item.steppedLine ? _item.steppedLine : false,
                         backgroundColor: _style[_index].strokeColor,
-                        borderColor: _style[_index].strokeColor
+                        borderColor: _style[_index].strokeColor,
+                        yAxisID: _item.yAxisID
                     });
                 });
 
                 var _chartData = {
-                    title: _json.name + "历史趋势",
-                    labels: _json.trneds.labels,
+                    title: _data.name + "历史趋势",
+                    labels: _data.trneds.labels,
                     datasets: _datasets
                 };
 
@@ -19843,7 +19876,7 @@ var Index = function (_React$Component) {
             //模拟数据开关
             _DataSim2.default.init();
         } else {
-            _index2.default.MyFetch.host = 'http://localhost:8080';
+            _index2.default.MyFetch.host = 'http://localhost:8099';
         }
         return _this;
     }
@@ -24491,7 +24524,7 @@ var LuTangModule = function (_React$Component) {
                     )
                 );
             } else if (_view == 'trend') {
-                return _react2.default.createElement(_LuTangTrend2.default, null);
+                return _react2.default.createElement(_LuTangTrend2.default, { name: this.state.trendName });
             }
         }
     }]);
@@ -37713,16 +37746,24 @@ var LuTangBeiHuCeModule = function (_React$Component) {
 
         var _this = _possibleConstructorReturn(this, (LuTangBeiHuCeModule.__proto__ || Object.getPrototypeOf(LuTangBeiHuCeModule)).call(this, props));
 
-        _this.state = { selectItem: 'right' };
+        _this.state = { selectItem: 'right', data: undefined };
         _this.generateClassName = _this.generateClassName.bind(_this);
         return _this;
     }
 
     _createClass(LuTangBeiHuCeModule, [{
+        key: 'componentWillMount',
+        value: function componentWillMount() {
+            _index2.default.MyFetch.fetch('/lutangbeihuce/' + this.state.selectItem, { method: 'GET' }, function (_json) {
+                this.setState({ data: _json.data });
+            }.bind(this));
+        }
+    }, {
         key: 'clickNavItem',
         value: function clickNavItem(_clickItem) {
-            console.log(_clickItem);
-            this.setState({ selectItem: _clickItem });
+            _index2.default.MyFetch.fetch('/lutangbeihuce/' + _clickItem, { method: 'GET' }, function (_json) {
+                this.setState({ selectItem: _clickItem, data: _json.data });
+            }.bind(this));
         }
     }, {
         key: 'generateClassName',
@@ -37793,7 +37834,7 @@ var LuTangBeiHuCeModule = function (_React$Component) {
                     _react2.default.createElement(
                         'div',
                         { className: 'card', style: { marginTop: '0px' } },
-                        _react2.default.createElement(_LuTangBeihuoceWall2.default, null)
+                        _react2.default.createElement(_LuTangBeihuoceWall2.default, { data: this.state.data })
                     )
                 )
             );
@@ -37851,10 +37892,9 @@ var LuTangBeihuoceWall = function (_React$Component) {
     function LuTangBeihuoceWall(props) {
         _classCallCheck(this, LuTangBeihuoceWall);
 
-        //view:wall,trend
+        //view:wall,trend 
         var _this = _possibleConstructorReturn(this, (LuTangBeihuoceWall.__proto__ || Object.getPrototypeOf(LuTangBeihuoceWall)).call(this, props));
 
-        _this.state = { data: undefined };
         _this.renderRows = _this.renderRows.bind(_this);
         _this.renderColumn = _this.renderColumn.bind(_this);
         return _this;
@@ -37863,10 +37903,10 @@ var LuTangBeihuoceWall = function (_React$Component) {
     _createClass(LuTangBeihuoceWall, [{
         key: 'componentWillMount',
         value: function componentWillMount() {
-            console.log('LuTangWall componentWillMount');
-            _index2.default.MyFetch.fetch('/lutangbeihuce', { method: 'GET' }, function (_json) {
-                this.setState({ data: _json });
-            }.bind(this));
+            // console.log('LuTangWall componentWillMount');
+            // Common.MyFetch.fetch('/lutangbeihuce', { method: 'GET' }, function (_json) {
+            //     this.setState({ data: _json });
+            // }.bind(this));
         }
     }, {
         key: 'renderColumn',
@@ -37915,7 +37955,7 @@ var LuTangBeihuoceWall = function (_React$Component) {
     }, {
         key: 'render',
         value: function render() {
-            var _data = this.state.data;
+            var _data = this.props.data;
             if (!_data) {
                 return _react2.default.createElement('div', { className: 'card-content' });
             } else {
@@ -37989,13 +38029,13 @@ var ShouReMianModule = function (_React$Component) {
         key: 'componentWillMount',
         value: function componentWillMount() {
             _index2.default.MyFetch.fetch('/shouremian', { method: 'GET' }, function (_json) {
-                this.setState({ data: _json });
+                this.setState({ data: _json.data });
             }.bind(this));
         }
     }, {
         key: 'renderColumn',
         value: function renderColumn(item, i) {
-            var _color = _index2.default.Utils.renderChuiHuiQiColor(item.status);
+            var _color = _index2.default.Utils.renderChuiHuiQiColor(item.value);
 
             return _react2.default.createElement(
                 'div',
@@ -38006,7 +38046,7 @@ var ShouReMianModule = function (_React$Component) {
                     _react2.default.createElement(
                         'div',
                         { className: 'card-content text-center shouremian-pane-card-content' },
-                        item.name
+                        item.field
                     )
                 )
             );
@@ -38254,13 +38294,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = {
         init: function init() {
 
-                _fetchMock2.default.get('/lutangbeihuce', _mockjs2.default.mock(_lutangbeihuce2.default));
-
                 _fetchMock2.default.get('/shouremian', _mockjs2.default.mock(_shouremian2.default));
+
+                _fetchMock2.default.get('/lutangbeihuce/right', _mockjs2.default.mock(_lutangbeihuce2.default));
 
                 _fetchMock2.default.get('/chuihuiqi/trend/E11', _mockjs2.default.mock(_chuihuiqitrend2.default));
 
-                _fetchMock2.default.get('/lutangwall', _mockjs2.default.mock(_lutangwall2.default));
+                _fetchMock2.default.get('/lutangwall/right', _mockjs2.default.mock(_lutangwall2.default));
 
                 _fetchMock2.default.get('/dashboard', _mockjs2.default.mock(_dashboard2.default));
 
@@ -48122,19 +48162,19 @@ module.exports = {"code":"000000","msg":"ok","data":{"name":"left","rows":[{"nam
 /* 246 */
 /***/ (function(module, exports) {
 
-module.exports = {"name":"E11","trneds":{"labels":["W1","W2","W3","W4","W5","W6","W7"],"datas":[{"name":"实时值","data":[65,59,80,81,56,55,40]},{"name":"污染率","data":[61,19,80,31,26,35,33]},{"name":"最大值","data":[95,95,95,96,96,96,97]},{"name":"最小值","data":[5,5,5,4,4,2,2]},{"name":"吹灰器状态","steppedLine":"before","data":[1,1,1,1,0,0,0]}]}}
+module.exports = {"code":"000000","msg":"ok","data":{"name":"E11","trneds":{"datas":[{"name":"实时值","yAxisID":"y-axis-value","data":[1000.1,1100.1,1002.1,1003.1,1004.1,1050.1,1060.1]},{"name":"污染率","yAxisID":"y-axis-percent","data":[20.1,23.2,22.2,22.5,24.3,25.31,21.2]},{"name":"最大值","yAxisID":"y-axis-value","data":[1200.1,1201.1,1202.1,1203.1,1204.1,1205.1,1206.1]},{"name":"最小值","yAxisID":"y-axis-value","data":[100.1,100.1,100.1,100.1,109.1,109.1,109.1]},{"name":"吹灰器状态","steppedLine":"before","yAxisID":"y-axis-status","data":[1,1,0,0,1,1,1]}],"labels":["W1","W2","W3","W4","W5","W6","W7"]}}}
 
 /***/ }),
 /* 247 */
 /***/ (function(module, exports) {
 
-module.exports = {"name":"right","rows|3":[{"name":"上","items":[{"name":"Thing1.AA1","value":100},{"name":"Thing1.AA2","value":102},{"name":"Thing1.AA3","value":105},{"name":"Thing1.AA4","value":101},{"name":"Thing1.AA5","value":102},{"name":"Thing1.AA6","value":103},{"name":"Thing1.AA7","value":104},{"name":"Thing1.AA8","value":100},{"name":"Thing1.AA9","value":101},{"name":"Thing1.AA10","value":102},{"name":"Thing1.AA11","value":101},{"name":"Thing1.AA12","value":102}]}]}
+module.exports = {"code":"000000","msg":"ok","data":{"name":"left","rows":[{"name":"上","items":[{"field":"Thing1.AA1","value":22.188},{"field":"Thing1.AA2","value":22.22},{"field":"Thing1.AA3","value":23.32},{"field":"Thing1.AA4","value":21.12},{"field":"Thing1.AA1","value":22.12},{"field":"Thing1.AA2","value":22.22},{"field":"Thing1.AA3","value":23.32},{"field":"Thing1.AA4","value":21.12},{"field":"Thing1.AA1","value":22.12},{"field":"Thing1.AA2","value":22.22},{"field":"Thing1.AA3","value":23.32},{"field":"Thing1.AA4","value":21.12}]},{"name":"中","items":[{"field":"Thing1.AA1","value":22.12},{"field":"Thing1.AA2","value":22.22},{"field":"Thing1.AA3","value":23.32},{"field":"Thing1.AA4","value":21.12},{"field":"Thing1.AA1","value":22.12},{"field":"Thing1.AA2","value":22.22},{"field":"Thing1.AA3","value":23.32},{"field":"Thing1.AA4","value":21.12},{"field":"Thing1.AA1","value":22.12},{"field":"Thing1.AA2","value":22.22},{"field":"Thing1.AA3","value":23.32},{"field":"Thing1.AA4","value":21.12}]},{"name":"下","items":[{"field":"Thing1.AA1","value":22.12},{"field":"Thing1.AA2","value":22.22},{"field":"Thing1.AA3","value":23.32},{"field":"Thing1.AA4","value":21.12},{"field":"Thing1.AA1","value":22.12},{"field":"Thing1.AA2","value":22.22},{"field":"Thing1.AA3","value":23.32},{"field":"Thing1.AA4","value":21.12},{"field":"Thing1.AA1","value":22.12},{"field":"Thing1.AA2","value":22.22},{"field":"Thing1.AA3","value":23.32},{"field":"Thing1.AA4","value":21.12}]}]}}
 
 /***/ }),
 /* 248 */
 /***/ (function(module, exports) {
 
-module.exports = {"name":"受热面吹灰器","rows":[{"name":"一级过","items":[{"name":"HL1","status":1},{"name":"HL2","status":1},{"name":"HL3","status":2},{"name":"HL4","status":2},{"name":"HL5","status":0},{"name":"HL6","status":0},{"name":"HL7","status":0},{"name":"HL8","status":0},{"name":"HL9","status":0},{"name":"HL10","status":0}]},{"name":"省煤器","items":[{"name":"HL1","status":0},{"name":"HL2","status":1},{"name":"HL3","status":2},{"name":"HL4","status":0},{"name":"HL5","status":1},{"name":"HL6","status":2},{"name":"HL7","status":0},{"name":"HL8","status":0},{"name":"HL9","status":0},{"name":"HL10","status":0}]}]}
+module.exports = {"code":"000000","msg":"ok","data":{"name":"受热面吹灰器","rows":[{"name":"一级过","items":[{"field":"Thing1.AA1","value":0},{"field":"Thing1.AA2","value":1},{"field":"Thing1.AA3","value":2},{"field":"Thing1.AA4","value":1},{"field":"Thing1.AA1","value":1},{"field":"Thing1.AA2","value":0},{"field":"Thing1.AA3","value":0},{"field":"Thing1.AA4","value":0},{"field":"Thing1.AA1","value":1},{"field":"Thing1.AA2","value":1}]},{"name":"省煤器","items":[{"field":"Thing1.AA1","value":0},{"field":"Thing1.AA2","value":1},{"field":"Thing1.AA3","value":2},{"field":"Thing1.AA4","value":1},{"field":"Thing1.AA1","value":1},{"field":"Thing1.AA2","value":0},{"field":"Thing1.AA3","value":0},{"field":"Thing1.AA4","value":0},{"field":"Thing1.AA1","value":1},{"field":"Thing1.AA2","value":1}]},{"name":"一级再","items":[{"field":"Thing1.AA1","value":0},{"field":"Thing1.AA2","value":1},{"field":"Thing1.AA3","value":2},{"field":"Thing1.AA4","value":1},{"field":"Thing1.AA1","value":1},{"field":"Thing1.AA2","value":0},{"field":"Thing1.AA3","value":0},{"field":"Thing1.AA4","value":0},{"field":"Thing1.AA1","value":1},{"field":"Thing1.AA2","value":1}]},{"name":"二级过","items":[{"field":"Thing1.AA1","value":0},{"field":"Thing1.AA2","value":1},{"field":"Thing1.AA3","value":2},{"field":"Thing1.AA4","value":1},{"field":"Thing1.AA1","value":1},{"field":"Thing1.AA2","value":0},{"field":"Thing1.AA3","value":0},{"field":"Thing1.AA4","value":0},{"field":"Thing1.AA1","value":1},{"field":"Thing1.AA2","value":1}]},{"name":"二级再","items":[{"field":"Thing1.AA1","value":0},{"field":"Thing1.AA2","value":1},{"field":"Thing1.AA3","value":2},{"field":"Thing1.AA4","value":1},{"field":"Thing1.AA1","value":1},{"field":"Thing1.AA2","value":0},{"field":"Thing1.AA3","value":0},{"field":"Thing1.AA4","value":0},{"field":"Thing1.AA1","value":1},{"field":"Thing1.AA2","value":1}]},{"name":"三级过","items":[{"field":"Thing1.AA1","value":0},{"field":"Thing1.AA2","value":1},{"field":"Thing1.AA3","value":2},{"field":"Thing1.AA4","value":1},{"field":"Thing1.AA1","value":1},{"field":"Thing1.AA2","value":0},{"field":"Thing1.AA3","value":0},{"field":"Thing1.AA4","value":0},{"field":"Thing1.AA1","value":1},{"field":"Thing1.AA2","value":1}]}]}}
 
 /***/ })
 /******/ ]);

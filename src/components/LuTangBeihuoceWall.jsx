@@ -10,17 +10,16 @@ class LuTangBeihuoceWall extends React.Component {
 
     constructor(props) {
         super(props);
-        //view:wall,trend
-        this.state = { data: undefined };
+        //view:wall,trend 
         this.renderRows = this.renderRows.bind(this);
         this.renderColumn = this.renderColumn.bind(this);
     }
 
     componentWillMount() {
-        console.log('LuTangWall componentWillMount');
-        Common.MyFetch.fetch('/lutangbeihuce', { method: 'GET' }, function (_json) {
-            this.setState({ data: _json });
-        }.bind(this));
+        // console.log('LuTangWall componentWillMount');
+        // Common.MyFetch.fetch('/lutangbeihuce', { method: 'GET' }, function (_json) {
+        //     this.setState({ data: _json });
+        // }.bind(this));
     }
 
     renderColumn(item, i) {
@@ -56,7 +55,7 @@ class LuTangBeihuoceWall extends React.Component {
     }
 
     render() {
-        let _data = this.state.data;
+        let _data = this.props.data;
         if (!_data) {
             return (
                 <div className="card-content" />
