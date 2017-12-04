@@ -57,6 +57,14 @@ class SideBar extends React.Component {
                                 </p>
                             </a>
                         </li>
+                        <li className={this.generateClassName('lutangbeihuice')}>
+                            <a href="#" onClick={this.clickSideItem.bind(this, 'lutangbeihuice')}>
+                                <i className="fa fa-free-code-camp fa-2"></i>
+                                <p>
+                                    <FormattedMessage id='dashboard.sidebar.lutangbeihuice' />
+                                </p>
+                            </a>
+                        </li>
                         <li className={this.generateClassName('shouremian')}>
                             <a href="#" onClick={this.clickSideItem.bind(this, 'shouremian')}>
                                 <i className="fa fa-fire fa-2"></i>

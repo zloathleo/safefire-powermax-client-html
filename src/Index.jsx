@@ -21,10 +21,12 @@ class Index extends React.Component {
 
     constructor(props) {
         super(props);
-        let isMock = true;
+        let isMock = false;
         if (isMock) {
             //模拟数据开关
             DataSim.init();
+        }else{
+            Common.MyFetch.host = 'http://localhost:8080';
         }
     }
 

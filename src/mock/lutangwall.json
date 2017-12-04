@@ -1,39 +1,329 @@
 {
-    "name": "right",
-    "rows|2-8": [
-        [
+    "code": "000000",
+    "msg": "ok",
+    "data": {
+        "name": "left",
+        "rows": [
             {
                 "name": "E11",
                 "status": 1,
-                "min": 10,
-                "max": 90,
-                "value": 60,
-                "pollutionRate": 80
+                "min": 10.0,
+                "max": 90.0,
+                "value": 50.0,
+                "pollutionRate": 80.0
             },
             {
-                "name": "E12",
-                "status": 2,
-                "min": 10,
-                "max": 90,
-                "value": 60,
-                "pollutionRate": 80
+                "name": "E11",
+                "status": 1,
+                "min": 10.0,
+                "max": 90.0,
+                "value": 50.0,
+                "pollutionRate": 80.0
             },
             {
-                "name": "E13",
-                "status": 0,
-                "min": 10,
-                "max": 90,
-                "value": 60,
-                "pollutionRate": 80
+                "name": "E11",
+                "status": 1,
+                "min": 10.0,
+                "max": 90.0,
+                "value": 50.0,
+                "pollutionRate": 80.0
             },
             {
-                "name": "E14",
-                "status": 2,
-                "min": 10,
-                "max": 90,
-                "value": 60,
-                "pollutionRate": 80
+                "name": "E11",
+                "status": 1,
+                "min": 10.0,
+                "max": 90.0,
+                "value": 50.0,
+                "pollutionRate": 80.0
+            },
+            {
+                "name": "E11",
+                "status": 1,
+                "min": 10.0,
+                "max": 90.0,
+                "value": 50.0,
+                "pollutionRate": 80.0
+            },
+            {
+                "name": "E11",
+                "status": 1,
+                "min": 10.0,
+                "max": 90.0,
+                "value": 50.0,
+                "pollutionRate": 80.0
+            },
+            {
+                "name": "E11",
+                "status": 1,
+                "min": 10.0,
+                "max": 90.0,
+                "value": 50.0,
+                "pollutionRate": 80.0
+            },
+            {
+                "name": "E11",
+                "status": 1,
+                "min": 10.0,
+                "max": 90.0,
+                "value": 50.0,
+                "pollutionRate": 80.0
+            },
+            {
+                "name": "E11",
+                "status": 1,
+                "min": 10.0,
+                "max": 90.0,
+                "value": 50.0,
+                "pollutionRate": 80.0
+            },
+            {
+                "name": "E11",
+                "status": 1,
+                "min": 10.0,
+                "max": 90.0,
+                "value": 50.0,
+                "pollutionRate": 80.0
+            },
+            {
+                "name": "E11",
+                "status": 1,
+                "min": 10.0,
+                "max": 90.0,
+                "value": 50.0,
+                "pollutionRate": 80.0
+            },
+            {
+                "name": "E11",
+                "status": 1,
+                "min": 10.0,
+                "max": 90.0,
+                "value": 50.0,
+                "pollutionRate": 80.0
+            },
+            {
+                "name": "E11",
+                "status": 1,
+                "min": 10.0,
+                "max": 90.0,
+                "value": 50.0,
+                "pollutionRate": 80.0
+            },
+            {
+                "name": "E11",
+                "status": 1,
+                "min": 10.0,
+                "max": 90.0,
+                "value": 50.0,
+                "pollutionRate": 80.0
+            },
+            {
+                "name": "E11",
+                "status": 1,
+                "min": 10.0,
+                "max": 90.0,
+                "value": 50.0,
+                "pollutionRate": 80.0
+            },
+            {
+                "name": "E11",
+                "status": 1,
+                "min": 10.0,
+                "max": 90.0,
+                "value": 50.0,
+                "pollutionRate": 80.0
+            },
+            {
+                "name": "E11",
+                "status": 1,
+                "min": 10.0,
+                "max": 90.0,
+                "value": 50.0,
+                "pollutionRate": 80.0
+            },
+            {
+                "name": "E11",
+                "status": 1,
+                "min": 10.0,
+                "max": 90.0,
+                "value": 50.0,
+                "pollutionRate": 80.0
+            },
+            {
+                "name": "E11",
+                "status": 1,
+                "min": 10.0,
+                "max": 90.0,
+                "value": 50.0,
+                "pollutionRate": 80.0
+            },
+            {
+                "name": "E11",
+                "status": 1,
+                "min": 10.0,
+                "max": 90.0,
+                "value": 50.0,
+                "pollutionRate": 80.0
+            },
+            {
+                "name": "E11",
+                "status": 1,
+                "min": 10.0,
+                "max": 90.0,
+                "value": 50.0,
+                "pollutionRate": 80.0
+            },
+            {
+                "name": "E11",
+                "status": 1,
+                "min": 10.0,
+                "max": 90.0,
+                "value": 50.0,
+                "pollutionRate": 80.0
+            },
+            {
+                "name": "E11",
+                "status": 1,
+                "min": 10.0,
+                "max": 90.0,
+                "value": 50.0,
+                "pollutionRate": 80.0
+            },
+            {
+                "name": "E11",
+                "status": 1,
+                "min": 10.0,
+                "max": 90.0,
+                "value": 50.0,
+                "pollutionRate": 80.0
+            },
+            {
+                "name": "E11",
+                "status": 1,
+                "min": 10.0,
+                "max": 90.0,
+                "value": 50.0,
+                "pollutionRate": 80.0
+            },
+            {
+                "name": "E11",
+                "status": 1,
+                "min": 10.0,
+                "max": 90.0,
+                "value": 50.0,
+                "pollutionRate": 80.0
+            },
+            {
+                "name": "E11",
+                "status": 1,
+                "min": 10.0,
+                "max": 90.0,
+                "value": 50.0,
+                "pollutionRate": 80.0
+            },
+            {
+                "name": "E11",
+                "status": 1,
+                "min": 10.0,
+                "max": 90.0,
+                "value": 50.0,
+                "pollutionRate": 80.0
+            },
+            {
+                "name": "E11",
+                "status": 1,
+                "min": 10.0,
+                "max": 90.0,
+                "value": 50.0,
+                "pollutionRate": 80.0
+            },
+            {
+                "name": "E11",
+                "status": 1,
+                "min": 10.0,
+                "max": 90.0,
+                "value": 50.0,
+                "pollutionRate": 80.0
+            },
+            {
+                "name": "E11",
+                "status": 1,
+                "min": 10.0,
+                "max": 90.0,
+                "value": 50.0,
+                "pollutionRate": 80.0
+            },
+            {
+                "name": "E11",
+                "status": 1,
+                "min": 10.0,
+                "max": 90.0,
+                "value": 50.0,
+                "pollutionRate": 80.0
+            },
+            {
+                "name": "E11",
+                "status": 1,
+                "min": 10.0,
+                "max": 90.0,
+                "value": 50.0,
+                "pollutionRate": 80.0
+            },
+            {
+                "name": "E11",
+                "status": 1,
+                "min": 10.0,
+                "max": 90.0,
+                "value": 50.0,
+                "pollutionRate": 80.0
+            },
+            {
+                "name": "E11",
+                "status": 1,
+                "min": 10.0,
+                "max": 90.0,
+                "value": 50.0,
+                "pollutionRate": 80.0
+            },
+            {
+                "name": "E11",
+                "status": 1,
+                "min": 10.0,
+                "max": 90.0,
+                "value": 50.0,
+                "pollutionRate": 80.0
+            },
+            {
+                "name": "E11",
+                "status": 1,
+                "min": 10.0,
+                "max": 90.0,
+                "value": 50.0,
+                "pollutionRate": 80.0
+            },
+            {
+                "name": "E11",
+                "status": 1,
+                "min": 10.0,
+                "max": 90.0,
+                "value": 50.0,
+                "pollutionRate": 80.0
+            },
+            {
+                "name": "E11",
+                "status": 1,
+                "min": 10.0,
+                "max": 90.0,
+                "value": 50.0,
+                "pollutionRate": 80.0
+            },
+            {
+                "name": "E11",
+                "status": 1,
+                "min": 10.0,
+                "max": 90.0,
+                "value": 50.0,
+                "pollutionRate": 80.0
             }
         ]
-    ]
+    }
 }

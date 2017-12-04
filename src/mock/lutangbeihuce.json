@@ -1,0 +1,58 @@
+{
+    "name": "right",
+    "rows|3": [
+        {
+            "name": "上",
+            "items": [
+                {
+                    "name": "Thing1.AA1",
+                    "value": 100
+                },
+                {
+                    "name": "Thing1.AA2",
+                    "value": 102
+                },
+                {
+                    "name": "Thing1.AA3",
+                    "value": 105
+                },
+                {
+                    "name": "Thing1.AA4",
+                    "value": 101
+                },
+                {
+                    "name": "Thing1.AA5",
+                    "value": 102
+                },
+                {
+                    "name": "Thing1.AA6",
+                    "value": 103
+                },
+                {
+                    "name": "Thing1.AA7",
+                    "value": 104
+                },
+                {
+                    "name": "Thing1.AA8",
+                    "value": 100
+                },
+                {
+                    "name": "Thing1.AA9",
+                    "value": 101
+                },
+                {
+                    "name": "Thing1.AA10",
+                    "value": 102
+                },
+                {
+                    "name": "Thing1.AA11",
+                    "value": 101
+                },
+                {
+                    "name": "Thing1.AA12",
+                    "value": 102
+                }
+            ]
+        }
+    ]
+}

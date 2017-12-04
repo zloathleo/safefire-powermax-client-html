@@ -4,11 +4,14 @@ import FetchMock from 'fetch-mock';
 
 import dashboard from './dashboard.json';
 import lutangwall from './lutangwall.json';
-import chuihuiqitrend from './chuihuiqitrend.json';
+import chuihuiqitrend from './chuihuiqitrend.json'; 
+import lutangbeihuce from './lutangbeihuce.json';
 import shouremian from './shouremian.json';
 
 export default {
     init: function () {
+
+        FetchMock.get('/lutangbeihuce', Mock.mock(lutangbeihuce));
 
         FetchMock.get('/shouremian', Mock.mock(shouremian));
 

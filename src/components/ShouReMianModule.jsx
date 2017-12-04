@@ -9,12 +9,9 @@ class ShouReMianModule extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { selectItem: 'right', view: 'wall', trendName: undefined };
+        this.state = { data: undefined };
         this.renderRows = this.renderRows.bind(this);
         this.renderColumn = this.renderColumn.bind(this);
-        // Common.EventProxy.on('lutang.view', (value) => {
-        //     this.setState({ view: value.view, trendName: value.name })
-        // });
     }
 
     componentWillMount() {
@@ -39,19 +36,17 @@ class ShouReMianModule extends React.Component {
 
     renderRows(row, i) {
         return (
-            <div key={i}>
-                <div className="row shouremian-row">
-                    <div className="col-sm-2 shouremian-pane">
-                        <div className="card shouremian-card">
-                            <div className="card-content text-center shouremian-pane-card-content">
-                                {row.name}
-                            </div>
+            <div key={i} className="row shouremian-row">
+                <div className="col-sm-2 shouremian-pane">
+                    <div className="card shouremian-card">
+                        <div className="card-content text-center shouremian-pane-card-content">
+                            {row.name}
                         </div>
                     </div>
-                    {
-                        row.items.map(this.renderColumn)
-                    }
                 </div>
+                {
+                    row.items.map(this.renderColumn)
+                }
             </div>
         );
     }

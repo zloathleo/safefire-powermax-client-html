@@ -9,7 +9,7 @@ class LuTangModule extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { selectItem: 'right', view: 'wall', trendName: undefined };
+        this.state = { selectItem: 'right', data: undefined, view: 'wall', trendName: undefined };
         this.generateClassName = this.generateClassName.bind(this);
 
         Common.EventProxy.on('lutang.view', (value) => {
@@ -21,9 +21,16 @@ class LuTangModule extends React.Component {
         Common.EventProxy.off('lutang.view');
     }
 
+    componentWillMount() {
+        Common.MyFetch.fetch('/lutangwall/' + this.state.selectItem, { method: 'GET' }, function (_json) {
+            this.setState({ data: _json.data });
+        }.bind(this));
+    }
+
     clickNavItem(_clickItem) {
-        console.log(_clickItem);
-        this.setState({ selectItem: _clickItem });
+        Common.MyFetch.fetch('/lutangwall/' + _clickItem, { method: 'GET' }, function (_json) {
+            this.setState({ selectItem: _clickItem, data: _json.data });
+        }.bind(this));
     }
 
     generateClassName(_itemName) {
@@ -67,7 +74,7 @@ class LuTangModule extends React.Component {
                         </div>
 
                         <div className="card" style={{ marginTop: '0px' }}>
-                            <LuTangWall />
+                            <LuTangWall data={this.state.data} />
                         </div>
 
                     </div>
@@ -75,7 +82,7 @@ class LuTangModule extends React.Component {
             )
         } else if (_view == 'trend') {
             return (
-                <LuTangTrend name={this.state.trendName} />
+                <LuTangTrend />
             );
         }
 

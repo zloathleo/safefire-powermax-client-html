@@ -1,54 +1,204 @@
 {
-    "summary": [
-        {
-            "field": "机组负荷",
-            "value": 90
-        },
-        {
-            "field": "锅炉负荷",
-            "value": 190
-        },
-        {
-            "field": "再热器出口工质温度",
-            "value": 90
-        },
-        {
-            "field": "排烟温度",
-            "value": 290
-        },
-        {
-            "field": "主汽压力",
-            "value": 290
-        },
-        {
-            "field": "总给煤量",
-            "value": 290
-        },
-        {
-            "field": "三过出口蒸汽温度",
-            "value": 290
-        }
-    ],
-    "kongyuqi": {
-        "name": "空预器",
-        "pollutionRate": 30.01,
-        "values": [
+    "code": "000000",
+    "msg": "ok",
+    "data": {
+        "summary": [
             {
-                "field": "烟气A",
-                "value": 90
+                "field": "机组负荷",
+                "value": 100
             },
             {
-                "field": "烟气B",
-                "value": 190
+                "field": "锅炉负荷",
+                "value": 101
             },
             {
-                "field": "工质A",
-                "value": 90
+                "field": "再热器出口工质温度",
+                "value": 102
             },
             {
-                "field": "工质B",
-                "value": 290
+                "field": "排烟温度",
+                "value": 103
+            },
+            {
+                "field": "主汽压力",
+                "value": 104
+            },
+            {
+                "field": "总给煤量",
+                "value": 105
+            },
+            {
+                "field": "三过出口蒸汽温度",
+                "value": 106
             }
-        ]
+        ],
+        "kongyuqi": {
+            "pollutionRate": 800.1,
+            "values": [
+                {
+                    "field": "烟气A",
+                    "value": 800
+                },
+                {
+                    "field": "烟气B",
+                    "value": 801
+                },
+                {
+                    "field": "工质A",
+                    "value": 202
+                },
+                {
+                    "field": "工质B",
+                    "value": 203
+                }
+            ],
+            "name": "空预器"
+        },
+        "erjizai": {
+            "pollutionRate": 120.1,
+            "values": [
+                {
+                    "field": "烟气A",
+                    "value": 220
+                },
+                {
+                    "field": "烟气B",
+                    "value": 221
+                },
+                {
+                    "field": "工质A",
+                    "value": 222
+                },
+                {
+                    "field": "工质B",
+                    "value": 223
+                }
+            ],
+            "name": "二级再"
+        },
+        "shenmeiqi": {
+            "pollutionRate": 100.1,
+            "values": [
+                {
+                    "field": "烟气A",
+                    "value": 400
+                },
+                {
+                    "field": "烟气B",
+                    "value": 401
+                },
+                {
+                    "field": "工质A",
+                    "value": 402
+                },
+                {
+                    "field": "工质B",
+                    "value": 403
+                }
+            ],
+            "name": "省煤器"
+        },
+        "sanjiguo": {
+            "pollutionRate": 300.1,
+            "values": [
+                {
+                    "field": "烟气A",
+                    "value": 300
+                },
+                {
+                    "field": "烟气B",
+                    "value": 301
+                },
+                {
+                    "field": "工质A",
+                    "value": 302
+                },
+                {
+                    "field": "工质B",
+                    "value": 303
+                }
+            ],
+            "name": "三级过热器"
+        },
+        "yijizai": {
+            "pollutionRate": 101.1,
+            "values": [
+                {
+                    "field": "烟气A",
+                    "value": 210
+                },
+                {
+                    "field": "烟气B",
+                    "value": 211
+                },
+                {
+                    "field": "工质A",
+                    "value": 212
+                },
+                {
+                    "field": "工质B",
+                    "value": 213
+                }
+            ],
+            "name": "一级再热器"
+        },
+        "yijiguo": {
+            "pollutionRate": 111.1,
+            "values": [
+                {
+                    "field": "烟气A",
+                    "value": 100
+                },
+                {
+                    "field": "烟气B",
+                    "value": 101
+                },
+                {
+                    "field": "工质A",
+                    "value": 102
+                },
+                {
+                    "field": "工质B",
+                    "value": 103
+                }
+            ],
+            "name": "一级过热器"
+        },
+        "erjiguo": {
+            "pollutionRate": 200.1,
+            "values": [
+                {
+                    "field": "烟气A",
+                    "value": 300
+                },
+                {
+                    "field": "烟气B",
+                    "value": 301
+                },
+                {
+                    "field": "工质A",
+                    "value": 302
+                },
+                {
+                    "field": "工质B",
+                    "value": 303
+                }
+            ],
+            "name": "二级过热器"
+        },
+        "lutang": {
+            "pollutionRate": 600.1,
+            "values": [
+                {
+                    "field": "炉膛出口烟温",
+                    "value": 600.65
+                },
+                {
+                    "field": "炉膛出口氧量",
+                    "value": 601.45
+                }
+            ],
+            "name": "炉膛"
+        }
     }
 }
