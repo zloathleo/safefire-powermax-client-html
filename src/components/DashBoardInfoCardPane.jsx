@@ -12,7 +12,7 @@ class DashBoardInfoCardPane extends React.Component {
         return (
             <tr key={i}>
                 <td>{row.field}</td>
-                <td>{row.value}</td>
+                <td>{row.value.toFixed(2)}</td>
             </tr>
         )
     }
@@ -26,7 +26,7 @@ class DashBoardInfoCardPane extends React.Component {
                     <i className="fa fa-file-text"></i>
                 </div>
                 <div className="card-content">
-                    <h4 className="card-title">{_data.pollutionRate} {_data.name}</h4>
+                    <h4 className="card-title">{_data.pollutionRate} % {_data.name}</h4>
                     <table className="table">
                         <tbody>
                             {

@@ -19,12 +19,21 @@ class LuTangModule extends React.Component {
 
     componentWillUnmount() {
         Common.EventProxy.off('lutang.view');
+        clearTimeout(this.refreshInterval);
     }
 
     componentWillMount() {
         Common.MyFetch.fetch('/lutangwall/' + this.state.selectItem, { method: 'GET' }, function (_json) {
             this.setState({ data: _json.data });
         }.bind(this));
+        
+        this.refreshInterval = setInterval(function(){
+            if(this.state.view == 'wall'){
+                Common.MyFetch.fetch('/lutangwall/' + this.state.selectItem, { method: 'GET' }, function (_json) {
+                    this.setState({ data: _json.data });
+                }.bind(this));
+            } 
+        }.bind(this), 3000); 
     }
 
     clickNavItem(_clickItem) {

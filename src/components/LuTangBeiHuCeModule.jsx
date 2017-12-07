@@ -16,6 +16,18 @@ class LuTangBeiHuCeModule extends React.Component {
         Common.MyFetch.fetch('/lutangbeihuce/' + this.state.selectItem, { method: 'GET' }, function (_json) {
             this.setState({ data: _json.data });
         }.bind(this));
+        
+        this.refreshInterval = setInterval(function(){
+            Common.MyFetch.fetch('/lutangbeihuce/' + this.state.selectItem, { method: 'GET' }, function (_json) {
+                this.setState({ data: _json.data });
+            }.bind(this));
+        }.bind(this), 3000);
+
+    
+    }
+
+    componentWillUnmount() {
+        clearTimeout(this.refreshInterval);
     }
 
     clickNavItem(_clickItem) {

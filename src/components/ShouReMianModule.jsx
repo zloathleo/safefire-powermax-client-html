@@ -18,6 +18,16 @@ class ShouReMianModule extends React.Component {
         Common.MyFetch.fetch('/shouremian', { method: 'GET' }, function (_json) {
             this.setState({ data: _json.data });
         }.bind(this));
+        
+        this.refreshInterval = setInterval(function () {
+            Common.MyFetch.fetch('/shouremian', { method: 'GET' }, function (_json) {
+                this.setState({ data: _json.data });
+            }.bind(this));
+        }.bind(this), 3000); 
+    }
+
+    componentWillUnmount() {
+        clearTimeout(this.refreshInterval);
     }
 
     renderColumn(item, i) {

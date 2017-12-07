@@ -28,7 +28,7 @@ class LuTangBeihuoceWall extends React.Component {
             <div className="col-sm-3 shouremian-pane" key={i}>
                 <div className="card shouremian-card">
                     <div className="card-content text-center shouremian-pane-card-content" >
-                        {item.value}
+                        {item.value.toFixed(2)}
                     </div>
                 </div>
             </div>

@@ -42,13 +42,13 @@ class DashBoardSummaryCardPane extends React.Component {
                         </thead>
                         <tbody>
                             <tr>
-                                <td className="text-center">{_data[0].value}</td>
-                                <td className="text-center">{_data[1].value}</td>
-                                <td className="text-center">{_data[2].value}</td>
-                                <td className="text-center">{_data[3].value}</td>
-                                <td className="text-center">{_data[4].value}</td>
-                                <td className="text-center">{_data[5].value}</td>
-                                <td className="text-center">{_data[6].value}</td>
+                                <td className="text-center">{_data[0].value.toFixed(2)}</td>
+                                <td className="text-center">{_data[1].value.toFixed(2)}</td>
+                                <td className="text-center">{_data[2].value.toFixed(2)}</td>
+                                <td className="text-center">{_data[3].value.toFixed(2)}</td>
+                                <td className="text-center">{_data[4].value.toFixed(2)}</td>
+                                <td className="text-center">{_data[5].value.toFixed(2)}</td>
+                                <td className="text-center">{_data[6].value.toFixed(2)}</td>
                             </tr>
                         </tbody>
                     </table>

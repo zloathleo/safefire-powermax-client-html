@@ -8,26 +8,40 @@ class LuTangTrend extends React.Component {
     constructor(props) {
         super(props);
         this.state = { data: undefined };
+        this.startTime = 0;
 
+        this.updateData = this.updateData.bind(this);
+        this.clickSearch = this.clickSearch.bind(this);
         let mode = 'x';
-        let intersect = false;
+
         this.chartOptions = {
             responsive: true,
             legend: {
-                position: 'right',
+                position: 'top',
             },
             title: {
                 display: true
             },
             tooltips: {
-                mode: mode,
-                intersect: intersect,
+                mode: 'index',
+                intersect: true,
             },
             hover: {
-                mode: mode,
-                intersect: intersect
+                mode: 'index',
+                intersect: true
             },
             scales: {
+                xAxes: [{
+                    type: "time",
+                    time: {
+                        format: 'MM/DD HH:mm:ss',
+                        tooltipFormat: 'MM/DD HH:mm:ss'
+                    },
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Date'
+                    }
+                },],
                 yAxes: [
                     {
                         type: "linear",
@@ -63,6 +77,10 @@ class LuTangTrend extends React.Component {
     }
 
     componentWillMount() {
+        this.updateData();
+    }
+
+    updateData() {
         let _style = [
             {
                 strokeColor: "#00bcd4",
@@ -76,7 +94,7 @@ class LuTangTrend extends React.Component {
                 strokeColor: "#7a6fbe",
             }
         ]
-        Common.MyFetch.fetch('/chuihuiqi/trend/' + this.props.name, { method: 'GET' }, function (_json) {
+        Common.MyFetch.fetch('/chuihuiqi/trend/' + this.props.name + "/" + this.startTime, { method: 'GET' }, function (_json) {
             let _data = _json.data;
             let _datas = _data.trneds.datas;
 
@@ -94,14 +112,32 @@ class LuTangTrend extends React.Component {
                 });
             });
 
+            let _labels_long = _data.trneds.labels;
+            let _labels = [];
+            _labels_long.map(function (_label, _index) {
+                _labels[_index] = new Date(_label);
+            });
+
             var _chartData = {
                 title: _data.name + "历史趋势",
-                labels: _data.trneds.labels,
+                labels: _labels,
                 datasets: _datasets,
             };
 
             this.setState({ data: _chartData });
         }.bind(this));
+    }
+
+    clickSearch() {
+        let _date = this.inputDate.value;
+        let _time = this.inputTime.value;
+        if (_date && _time) {
+            this.startTime = new Date(_date + ' ' + _time).getTime();
+          
+            console.log(_date + "," + this.startTime);
+            this.updateData();
+        }
+
     }
 
     render() {
@@ -110,7 +146,13 @@ class LuTangTrend extends React.Component {
         if (_data) {
             this.chartOptions.title.text = _data.title;
             return (
-                <RC2 data={_data} options={this.chartOptions} type='line' />
+                <div>
+                    起始时间:
+                    <input type="date" ref={(_ref) => this.inputDate = _ref} />
+                    <input type="time" ref={(_ref) => this.inputTime = _ref} />
+                    <button className="btn btn-primary" onClick={this.clickSearch} >查询</button>
+                    <RC2 data={_data} options={this.chartOptions} type='line' />
+                </div>
             )
         } else {
             return (

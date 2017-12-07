@@ -7626,13 +7626,13 @@ var LuTangChuihuiqiCell = function (_React$Component) {
                             'span',
                             { className: 'label cell-value-bg' },
                             '\u6700\u5C0F\u503C:',
-                            _data.min
+                            _data.min.toFixed(2)
                         ),
                         _react2.default.createElement(
                             'span',
                             { className: 'label cell-value-bg' },
                             '\u6700\u5927\u503C:',
-                            _data.max
+                            _data.max.toFixed(2)
                         )
                     ),
                     _react2.default.createElement(
@@ -7642,13 +7642,13 @@ var LuTangChuihuiqiCell = function (_React$Component) {
                             'span',
                             { className: 'label cell-value-bg' },
                             '\u6E29\u5EA6\u503C:',
-                            _data.value
+                            _data.value.toFixed(2)
                         ),
                         _react2.default.createElement(
                             'span',
                             { className: 'label cell-value-bg' },
                             '\u6C61\u67D3\u7387:',
-                            _data.pollutionRate
+                            _data.pollutionRate.toFixed(2)
                         )
                     )
                 )
@@ -7704,26 +7704,40 @@ var LuTangTrend = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (LuTangTrend.__proto__ || Object.getPrototypeOf(LuTangTrend)).call(this, props));
 
         _this.state = { data: undefined };
+        _this.startTime = 0;
 
+        _this.updateData = _this.updateData.bind(_this);
+        _this.clickSearch = _this.clickSearch.bind(_this);
         var mode = 'x';
-        var intersect = false;
+
         _this.chartOptions = {
             responsive: true,
             legend: {
-                position: 'right'
+                position: 'top'
             },
             title: {
                 display: true
             },
             tooltips: {
-                mode: mode,
-                intersect: intersect
+                mode: 'index',
+                intersect: true
             },
             hover: {
-                mode: mode,
-                intersect: intersect
+                mode: 'index',
+                intersect: true
             },
             scales: {
+                xAxes: [{
+                    type: "time",
+                    time: {
+                        format: 'MM/DD HH:mm:ss',
+                        tooltipFormat: 'MM/DD HH:mm:ss'
+                    },
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Date'
+                    }
+                }],
                 yAxes: [{
                     type: "linear",
                     display: true,
@@ -7761,6 +7775,11 @@ var LuTangTrend = function (_React$Component) {
     _createClass(LuTangTrend, [{
         key: 'componentWillMount',
         value: function componentWillMount() {
+            this.updateData();
+        }
+    }, {
+        key: 'updateData',
+        value: function updateData() {
             var _style = [{
                 strokeColor: "#00bcd4"
             }, {
@@ -7772,7 +7791,7 @@ var LuTangTrend = function (_React$Component) {
             }, {
                 strokeColor: "#7a6fbe"
             }];
-            _index3.default.MyFetch.fetch('/chuihuiqi/trend/' + this.props.name, { method: 'GET' }, function (_json) {
+            _index3.default.MyFetch.fetch('/chuihuiqi/trend/' + this.props.name + "/" + this.startTime, { method: 'GET' }, function (_json) {
                 var _data = _json.data;
                 var _datas = _data.trneds.datas;
 
@@ -7790,9 +7809,15 @@ var LuTangTrend = function (_React$Component) {
                     });
                 });
 
+                var _labels_long = _data.trneds.labels;
+                var _labels = [];
+                _labels_long.map(function (_label, _index) {
+                    _labels[_index] = new Date(_label);
+                });
+
                 var _chartData = {
                     title: _data.name + "历史趋势",
-                    labels: _data.trneds.labels,
+                    labels: _labels,
                     datasets: _datasets
                 };
 
@@ -7800,13 +7825,43 @@ var LuTangTrend = function (_React$Component) {
             }.bind(this));
         }
     }, {
+        key: 'clickSearch',
+        value: function clickSearch() {
+            var _date = this.inputDate.value;
+            var _time = this.inputTime.value;
+            if (_date && _time) {
+                this.startTime = new Date(_date + ' ' + _time).getTime();
+
+                console.log(_date + "," + this.startTime);
+                this.updateData();
+            }
+        }
+    }, {
         key: 'render',
         value: function render() {
+            var _this2 = this;
+
             var _data = this.state.data;
 
             if (_data) {
                 this.chartOptions.title.text = _data.title;
-                return _react2.default.createElement(_reactChartjs2.default, { data: _data, options: this.chartOptions, type: 'line' });
+                return _react2.default.createElement(
+                    'div',
+                    null,
+                    '\u8D77\u59CB\u65F6\u95F4:',
+                    _react2.default.createElement('input', { type: 'date', ref: function ref(_ref) {
+                            return _this2.inputDate = _ref;
+                        } }),
+                    _react2.default.createElement('input', { type: 'time', ref: function ref(_ref) {
+                            return _this2.inputTime = _ref;
+                        } }),
+                    _react2.default.createElement(
+                        'button',
+                        { className: 'btn btn-primary', onClick: this.clickSearch },
+                        '\u67E5\u8BE2'
+                    ),
+                    _react2.default.createElement(_reactChartjs2.default, { data: _data, options: this.chartOptions, type: 'line' })
+                );
             } else {
                 return _react2.default.createElement('div', null);
             }
@@ -24019,6 +24074,17 @@ var DashBoardModule = function (_React$Component) {
             _index2.default.MyFetch.fetch('/dashboard', { method: 'GET' }, function (_json) {
                 this.setState({ data: _json.data });
             }.bind(this));
+
+            this.refreshInterval = setInterval(function () {
+                _index2.default.MyFetch.fetch('/dashboard', { method: 'GET' }, function (_json) {
+                    this.setState({ data: _json.data });
+                }.bind(this));
+            }.bind(this), 3000);
+        }
+    }, {
+        key: 'componentWillUnmount',
+        value: function componentWillUnmount() {
+            clearTimeout(this.refreshInterval);
         }
     }, {
         key: 'render',
@@ -24230,37 +24296,37 @@ var DashBoardSummaryCardPane = function (_React$Component) {
                                 _react2.default.createElement(
                                     "td",
                                     { className: "text-center" },
-                                    _data[0].value
+                                    _data[0].value.toFixed(2)
                                 ),
                                 _react2.default.createElement(
                                     "td",
                                     { className: "text-center" },
-                                    _data[1].value
+                                    _data[1].value.toFixed(2)
                                 ),
                                 _react2.default.createElement(
                                     "td",
                                     { className: "text-center" },
-                                    _data[2].value
+                                    _data[2].value.toFixed(2)
                                 ),
                                 _react2.default.createElement(
                                     "td",
                                     { className: "text-center" },
-                                    _data[3].value
+                                    _data[3].value.toFixed(2)
                                 ),
                                 _react2.default.createElement(
                                     "td",
                                     { className: "text-center" },
-                                    _data[4].value
+                                    _data[4].value.toFixed(2)
                                 ),
                                 _react2.default.createElement(
                                     "td",
                                     { className: "text-center" },
-                                    _data[5].value
+                                    _data[5].value.toFixed(2)
                                 ),
                                 _react2.default.createElement(
                                     "td",
                                     { className: "text-center" },
-                                    _data[6].value
+                                    _data[6].value.toFixed(2)
                                 )
                             )
                         )
@@ -24328,7 +24394,7 @@ var DashBoardInfoCardPane = function (_React$Component) {
                 _react2.default.createElement(
                     'td',
                     null,
-                    row.value
+                    row.value.toFixed(2)
                 )
             );
         }
@@ -24433,6 +24499,7 @@ var LuTangModule = function (_React$Component) {
         key: 'componentWillUnmount',
         value: function componentWillUnmount() {
             _index2.default.EventProxy.off('lutang.view');
+            clearTimeout(this.refreshInterval);
         }
     }, {
         key: 'componentWillMount',
@@ -24440,6 +24507,14 @@ var LuTangModule = function (_React$Component) {
             _index2.default.MyFetch.fetch('/lutangwall/' + this.state.selectItem, { method: 'GET' }, function (_json) {
                 this.setState({ data: _json.data });
             }.bind(this));
+
+            this.refreshInterval = setInterval(function () {
+                if (this.state.view == 'wall') {
+                    _index2.default.MyFetch.fetch('/lutangwall/' + this.state.selectItem, { method: 'GET' }, function (_json) {
+                        this.setState({ data: _json.data });
+                    }.bind(this));
+                }
+            }.bind(this), 3000);
         }
     }, {
         key: 'clickNavItem',
@@ -37757,6 +37832,17 @@ var LuTangBeiHuCeModule = function (_React$Component) {
             _index2.default.MyFetch.fetch('/lutangbeihuce/' + this.state.selectItem, { method: 'GET' }, function (_json) {
                 this.setState({ data: _json.data });
             }.bind(this));
+
+            this.refreshInterval = setInterval(function () {
+                _index2.default.MyFetch.fetch('/lutangbeihuce/' + this.state.selectItem, { method: 'GET' }, function (_json) {
+                    this.setState({ data: _json.data });
+                }.bind(this));
+            }.bind(this), 3000);
+        }
+    }, {
+        key: 'componentWillUnmount',
+        value: function componentWillUnmount() {
+            clearTimeout(this.refreshInterval);
         }
     }, {
         key: 'clickNavItem',
@@ -37921,7 +38007,7 @@ var LuTangBeihuoceWall = function (_React$Component) {
                     _react2.default.createElement(
                         'div',
                         { className: 'card-content text-center shouremian-pane-card-content' },
-                        item.value
+                        item.value.toFixed(2)
                     )
                 )
             );
@@ -38031,6 +38117,17 @@ var ShouReMianModule = function (_React$Component) {
             _index2.default.MyFetch.fetch('/shouremian', { method: 'GET' }, function (_json) {
                 this.setState({ data: _json.data });
             }.bind(this));
+
+            this.refreshInterval = setInterval(function () {
+                _index2.default.MyFetch.fetch('/shouremian', { method: 'GET' }, function (_json) {
+                    this.setState({ data: _json.data });
+                }.bind(this));
+            }.bind(this), 3000);
+        }
+    }, {
+        key: 'componentWillUnmount',
+        value: function componentWillUnmount() {
+            clearTimeout(this.refreshInterval);
         }
     }, {
         key: 'renderColumn',

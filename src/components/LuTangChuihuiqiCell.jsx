@@ -28,13 +28,13 @@ class LuTangChuihuiqiCell extends React.Component {
                     </span>
 
                     <div>
-                        <span className="label cell-value-bg" >最小值:{_data.min}</span>
-                        <span className="label cell-value-bg">最大值:{_data.max}</span>
+                        <span className="label cell-value-bg" >最小值:{_data.min.toFixed(2)}</span>
+                        <span className="label cell-value-bg">最大值:{_data.max.toFixed(2)}</span>
                     </div>
 
                     <div>
-                        <span className="label cell-value-bg">温度值:{_data.value}</span>
-                        <span className="label cell-value-bg">污染率:{_data.pollutionRate}</span>
+                        <span className="label cell-value-bg">温度值:{_data.value.toFixed(2)}</span>
+                        <span className="label cell-value-bg">污染率:{_data.pollutionRate.toFixed(2)}</span>
                     </div>
                 </div>
             </div>
