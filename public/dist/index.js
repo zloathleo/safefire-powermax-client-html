@@ -7606,13 +7606,13 @@ var LuTangChuihuiqiCell = function (_React$Component) {
         value: function render() {
             var _data = this.props.data;
             var _color = _index2.default.Utils.renderChuiHuiQiColor(_data.status);
-
+            var _nscolor = _data.ns ? '#9c27b0' : '#aaaaaa';
             return _react2.default.createElement(
                 'div',
                 { className: 'col-xs-6 col-sm-3 col-md-3' },
                 _react2.default.createElement(
                     'div',
-                    { className: 'chuihuiqi-pane', style: { backgroundColor: _color, cursor: 'pointer' }, onClick: this.clickChuiHuiQiCell.bind(this, _data.name) },
+                    { className: 'chuihuiqi-pane', style: { backgroundColor: '#f5f5f5' }, onClick: this.clickChuiHuiQiCell.bind(this, _data.name) },
                     _react2.default.createElement(
                         'span',
                         { className: 'badge cell-icon' },
@@ -7625,14 +7625,14 @@ var LuTangChuihuiqiCell = function (_React$Component) {
                         _react2.default.createElement(
                             'span',
                             { className: 'label cell-value-bg' },
-                            '\u6700\u5C0F\u503C:',
-                            _data.min.toFixed(2)
+                            '\u6700\u5927:',
+                            _data.max.toFixed(2)
                         ),
                         _react2.default.createElement(
                             'span',
                             { className: 'label cell-value-bg' },
-                            '\u6700\u5927\u503C:',
-                            _data.max.toFixed(2)
+                            '\u6700\u5C0F:',
+                            _data.min.toFixed(2)
                         )
                     ),
                     _react2.default.createElement(
@@ -7641,7 +7641,7 @@ var LuTangChuihuiqiCell = function (_React$Component) {
                         _react2.default.createElement(
                             'span',
                             { className: 'label cell-value-bg' },
-                            '\u6E29\u5EA6\u503C:',
+                            '\u6E29\u5EA6:',
                             _data.value.toFixed(2)
                         ),
                         _react2.default.createElement(
@@ -7649,6 +7649,34 @@ var LuTangChuihuiqiCell = function (_React$Component) {
                             { className: 'label cell-value-bg' },
                             '\u6C61\u67D3\u7387:',
                             _data.pollutionRate.toFixed(2)
+                        )
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        null,
+                        _react2.default.createElement(
+                            'span',
+                            { className: 'label cell-value-bg' },
+                            '\u72B6\u6001:',
+                            _react2.default.createElement(
+                                'span',
+                                { className: 'badge', style: { backgroundColor: _color } },
+                                _data.status == 2 ? 'On' : 'Off'
+                            )
+                        )
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        null,
+                        _react2.default.createElement(
+                            'span',
+                            { className: 'label cell-value-bg' },
+                            '\u9700\u8981\u5439\u7070:',
+                            _react2.default.createElement(
+                                'span',
+                                { className: 'badge', style: { backgroundColor: _nscolor } },
+                                _data.ns + ''
+                            )
                         )
                     )
                 )
@@ -7681,6 +7709,10 @@ var _react2 = _interopRequireDefault(_react);
 var _reactChartjs = __webpack_require__(177);
 
 var _reactChartjs2 = _interopRequireDefault(_reactChartjs);
+
+var _AppState = __webpack_require__(9);
+
+var _AppState2 = _interopRequireDefault(_AppState);
 
 var _index2 = __webpack_require__(4);
 
@@ -7752,8 +7784,8 @@ var LuTangTrend = function (_React$Component) {
                         drawOnChartArea: false
                     },
                     ticks: {
-                        suggestedMin: -1,
-                        suggestedMax: 2
+                        suggestedMin: -0.5,
+                        suggestedMax: 1.5
                     }
                 }, {
                     type: "linear",
@@ -7805,6 +7837,8 @@ var LuTangTrend = function (_React$Component) {
                         steppedLine: _item.steppedLine ? _item.steppedLine : false,
                         backgroundColor: _style[_index].strokeColor,
                         borderColor: _style[_index].strokeColor,
+                        pointRadius: 1,
+                        pointHoverRadius: 3,
                         yAxisID: _item.yAxisID
                     });
                 });
@@ -7837,6 +7871,11 @@ var LuTangTrend = function (_React$Component) {
             }
         }
     }, {
+        key: 'clickBack',
+        value: function clickBack() {
+            _AppState2.default.changeState('lutang.view', { name: undefined, view: 'wall' });
+        }
+    }, {
         key: 'render',
         value: function render() {
             var _this2 = this;
@@ -7859,6 +7898,11 @@ var LuTangTrend = function (_React$Component) {
                         'button',
                         { className: 'btn btn-primary', onClick: this.clickSearch },
                         '\u67E5\u8BE2'
+                    ),
+                    _react2.default.createElement(
+                        'button',
+                        { className: 'btn btn-primary', onClick: this.clickBack },
+                        '\u8FD4\u56DE'
                     ),
                     _react2.default.createElement(_reactChartjs2.default, { data: _data, options: this.chartOptions, type: 'line' })
                 );
@@ -19931,7 +19975,8 @@ var Index = function (_React$Component) {
             //模拟数据开关
             _DataSim2.default.init();
         } else {
-            _index2.default.MyFetch.host = 'http://localhost:8099';
+            // Common.MyFetch.host = 'http://localhost:8099';
+            _index2.default.MyFetch.host = '';
         }
         return _this;
     }
@@ -20097,13 +20142,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = {
     renderChuiHuiQiColor: function renderChuiHuiQiColor(_status) {
-        if (_status == 1) {
-            return '#4caf50'; //需要吹灰
-        } else if (_status == 2) {
-            return '#ff9800'; //正在吹灰
+        if (_status == 2) {
+            return '#333'; //正在吹灰
         }
-        //未吹灰 0 
-        return '#eee';
+        //闲置
+        return '#aaaaaa';
     }
 };
 
@@ -24101,42 +24144,47 @@ var DashBoardModule = function (_React$Component) {
                     ),
                     _react2.default.createElement(
                         'div',
-                        { className: 'col-xs-6 col-sm-4 col-lg-3' },
-                        _react2.default.createElement(_DashBoardInfoCardPane2.default, { data: _data.kongyuqi })
+                        { className: 'col-xs-6 col-sm-4 col-lg-4' },
+                        _react2.default.createElement(_DashBoardInfoCardPane2.default, { data: _data.kongyuqiA })
                     ),
                     _react2.default.createElement(
                         'div',
-                        { className: 'col-xs-6 col-sm-4 col-lg-3' },
+                        { className: 'col-xs-6 col-sm-4 col-lg-4' },
+                        _react2.default.createElement(_DashBoardInfoCardPane2.default, { data: _data.kongyuqiB })
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'col-xs-6 col-sm-4 col-lg-4' },
                         _react2.default.createElement(_DashBoardInfoCardPane2.default, { data: _data.erjizai })
                     ),
                     _react2.default.createElement(
                         'div',
-                        { className: 'col-xs-6 col-sm-4 col-lg-3' },
+                        { className: 'col-xs-6 col-sm-4 col-lg-4' },
                         _react2.default.createElement(_DashBoardInfoCardPane2.default, { data: _data.shenmeiqi })
                     ),
                     _react2.default.createElement(
                         'div',
-                        { className: 'col-xs-6 col-sm-4 col-lg-3' },
+                        { className: 'col-xs-6 col-sm-4 col-lg-4' },
                         _react2.default.createElement(_DashBoardInfoCardPane2.default, { data: _data.sanjiguo })
                     ),
                     _react2.default.createElement(
                         'div',
-                        { className: 'col-xs-6 col-sm-4 col-lg-3' },
+                        { className: 'col-xs-6 col-sm-4 col-lg-4' },
                         _react2.default.createElement(_DashBoardInfoCardPane2.default, { data: _data.yijizai })
                     ),
                     _react2.default.createElement(
                         'div',
-                        { className: 'col-xs-6 col-sm-4 col-lg-3' },
+                        { className: 'col-xs-6 col-sm-4 col-lg-4' },
                         _react2.default.createElement(_DashBoardInfoCardPane2.default, { data: _data.yijiguo })
                     ),
                     _react2.default.createElement(
                         'div',
-                        { className: 'col-xs-6 col-sm-4 col-lg-3' },
+                        { className: 'col-xs-6 col-sm-4 col-lg-4' },
                         _react2.default.createElement(_DashBoardInfoCardPane2.default, { data: _data.erjiguo })
                     ),
                     _react2.default.createElement(
                         'div',
-                        { className: 'col-xs-6 col-sm-4 col-lg-3' },
+                        { className: 'col-xs-6 col-sm-4 col-lg-4' },
                         _react2.default.createElement(_DashBoardInfoCardPane2.default, { data: _data.lutang })
                     )
                 );
@@ -24253,37 +24301,37 @@ var DashBoardSummaryCardPane = function (_React$Component) {
                                 _react2.default.createElement(
                                     "th",
                                     { className: "text-center" },
-                                    _data[0].field
+                                    _data[0].field + '/MW'
                                 ),
                                 _react2.default.createElement(
                                     "th",
                                     { className: "text-center" },
-                                    _data[1].field
+                                    _data[1].field + 't/h'
                                 ),
                                 _react2.default.createElement(
                                     "th",
                                     { className: "text-center" },
-                                    _data[2].field
+                                    _data[2].field + '/MPa'
                                 ),
                                 _react2.default.createElement(
                                     "th",
                                     { className: "text-center" },
-                                    _data[3].field
+                                    _data[3].field + '/℃'
                                 ),
                                 _react2.default.createElement(
                                     "th",
                                     { className: "text-center" },
-                                    _data[4].field
+                                    _data[4].field + '/MPa'
                                 ),
                                 _react2.default.createElement(
                                     "th",
                                     { className: "text-center" },
-                                    _data[5].field
+                                    _data[5].field + 't/h'
                                 ),
                                 _react2.default.createElement(
                                     "th",
                                     { className: "text-center" },
-                                    _data[6].field
+                                    _data[6].field + '/℃'
                                 )
                             )
                         ),
@@ -24383,6 +24431,16 @@ var DashBoardInfoCardPane = function (_React$Component) {
     _createClass(DashBoardInfoCardPane, [{
         key: 'renderRows',
         value: function renderRows(row, i) {
+            console.log(111);
+            var _value = row.value;
+            var display = '';
+            if (typeof _value == 'string') {
+                display = '-';
+            } else if (_value == 0) {
+                display = '0.00';
+            } else {
+                display = _value.toFixed(2);
+            }
             return _react2.default.createElement(
                 'tr',
                 { key: i },
@@ -24394,7 +24452,7 @@ var DashBoardInfoCardPane = function (_React$Component) {
                 _react2.default.createElement(
                     'td',
                     null,
-                    row.value.toFixed(2)
+                    display
                 )
             );
         }
@@ -24417,8 +24475,6 @@ var DashBoardInfoCardPane = function (_React$Component) {
                     _react2.default.createElement(
                         'h4',
                         { className: 'card-title' },
-                        _data.pollutionRate,
-                        ' ',
                         _data.name
                     ),
                     _react2.default.createElement(

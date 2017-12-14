@@ -38,28 +38,31 @@ class DashBoardModule extends React.Component {
                         <DashBoardSummaryCardPane data={_data.summary} />
                     </div>
 
-                    <div className="col-xs-6 col-sm-4 col-lg-3">
-                        <DashBoardInfoCardPane data={_data.kongyuqi} />
+                    <div className="col-xs-6 col-sm-4 col-lg-4">
+                        <DashBoardInfoCardPane data={_data.kongyuqiA} />
                     </div>
-                    <div className="col-xs-6 col-sm-4 col-lg-3">
+                    <div className="col-xs-6 col-sm-4 col-lg-4">
+                        <DashBoardInfoCardPane data={_data.kongyuqiB} />
+                    </div>
+                    <div className="col-xs-6 col-sm-4 col-lg-4">
                         <DashBoardInfoCardPane data={_data.erjizai} />
                     </div>
-                    <div className="col-xs-6 col-sm-4 col-lg-3">
+                    <div className="col-xs-6 col-sm-4 col-lg-4">
                         <DashBoardInfoCardPane data={_data.shenmeiqi} />
                     </div>
-                    <div className="col-xs-6 col-sm-4 col-lg-3">
+                    <div className="col-xs-6 col-sm-4 col-lg-4">
                         <DashBoardInfoCardPane data={_data.sanjiguo} />
                     </div>
-                    <div className="col-xs-6 col-sm-4 col-lg-3">
+                    <div className="col-xs-6 col-sm-4 col-lg-4">
                         <DashBoardInfoCardPane data={_data.yijizai} />
                     </div>
-                    <div className="col-xs-6 col-sm-4 col-lg-3">
+                    <div className="col-xs-6 col-sm-4 col-lg-4">
                         <DashBoardInfoCardPane data={_data.yijiguo} />
                     </div>
-                    <div className="col-xs-6 col-sm-4 col-lg-3">
+                    <div className="col-xs-6 col-sm-4 col-lg-4">
                         <DashBoardInfoCardPane data={_data.erjiguo} />
                     </div>
-                    <div className="col-xs-6 col-sm-4 col-lg-3">
+                    <div className="col-xs-6 col-sm-4 col-lg-4">
                         <DashBoardInfoCardPane data={_data.lutang} />
                     </div>
                 </div>

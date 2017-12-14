@@ -1,6 +1,7 @@
 import React from 'react';
 import RC2 from 'react-chartjs2';
 
+import AppState from '../state/AppState.jsx';
 import Common from '../common/index.jsx';
 //吹灰器单元格
 class LuTangTrend extends React.Component {
@@ -57,8 +58,8 @@ class LuTangTrend extends React.Component {
                             drawOnChartArea: false,
                         },
                         ticks: {
-                            suggestedMin: -1,
-                            suggestedMax: 2
+                            suggestedMin: -0.5,
+                            suggestedMax: 1.5
                         }
                     }, {
                         type: "linear",
@@ -108,6 +109,8 @@ class LuTangTrend extends React.Component {
                     steppedLine: _item.steppedLine ? _item.steppedLine : false,
                     backgroundColor: _style[_index].strokeColor,
                     borderColor: _style[_index].strokeColor,
+                    pointRadius: 1,
+                    pointHoverRadius: 3,
                     yAxisID: _item.yAxisID,
                 });
             });
@@ -140,6 +143,10 @@ class LuTangTrend extends React.Component {
 
     }
 
+    clickBack(){
+        AppState.changeState('lutang.view', { name: undefined, view: 'wall' });
+    }
+
     render() {
         let _data = this.state.data;
 
@@ -151,6 +158,7 @@ class LuTangTrend extends React.Component {
                     <input type="date" ref={(_ref) => this.inputDate = _ref} />
                     <input type="time" ref={(_ref) => this.inputTime = _ref} />
                     <button className="btn btn-primary" onClick={this.clickSearch} >查询</button>
+                    <button className="btn btn-primary" onClick={this.clickBack} >返回</button>
                     <RC2 data={_data} options={this.chartOptions} type='line' />
                 </div>
             )

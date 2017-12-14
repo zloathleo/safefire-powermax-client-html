@@ -9,10 +9,20 @@ class DashBoardInfoCardPane extends React.Component {
     }
 
     renderRows(row, i) {
+        console.log(111);
+        let _value = row.value;
+        let display = '';
+        if (typeof (_value) == 'string') {
+            display = '-';
+        } else if (_value == 0) {
+            display = '0.00';
+        } else {
+            display = _value.toFixed(2)
+        }
         return (
             <tr key={i}>
                 <td>{row.field}</td>
-                <td>{row.value.toFixed(2)}</td>
+                <td>{display}</td>
             </tr>
         )
     }
@@ -26,7 +36,7 @@ class DashBoardInfoCardPane extends React.Component {
                     <i className="fa fa-file-text"></i>
                 </div>
                 <div className="card-content">
-                    <h4 className="card-title">{_data.pollutionRate} % {_data.name}</h4>
+                    <h4 className="card-title">{_data.name}</h4>
                     <table className="table">
                         <tbody>
                             {
